@@ -1,0 +1,87 @@
+@import url(Common.scss);
+
+// .tab_bar > ul > li:nth-child(2) > a {
+//   color: #513736;
+// }
+
+main {
+  height: 85.8%;
+  padding-top: 64px;
+}
+
+/* main_section */
+
+.main_section {
+  > ul {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #ebebeb;
+
+    > li {
+      border-bottom: 1px solid #ebebeb;
+
+      > a {
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 16px;
+        align-items: center;
+      }
+    }
+  }
+
+  .chats_img {
+    width: 50px;
+    height: 50px;
+    margin: 15px;
+  }
+
+  .chats_cont {
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .chats_name {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .chats_latest {
+      font-size: 12px;
+      color: #8E9399;
+    }
+  }
+
+  .chats_time {
+    margin-right: 15px;
+    font-size: 12px;
+    color: #8E9399;
+  }
+}
+
+/* floating action btn */
+
+.chat_fa_btn {
+  position: fixed;
+  right: 20px;
+  bottom: 80px;
+
+  > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background-color: #FFE84C;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px #0004;
+    font-size: 18px;
+    color: #513736;
+    transition: color 300ms linear 0s, background 300ms linear 0s;
+
+    &:hover {
+      background: #513736;
+      color: #FFE84C;
+    }
+  }
+}

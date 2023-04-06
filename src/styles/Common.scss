@@ -1,0 +1,25 @@
+/* common.css */
+@import url(reset.css);
+@import url(Header.scss);
+@import url(Tabbar.scss);
+
+body{font-size:12px;}
+a:link, a:visited{color:#000; text-decoration:none;}
+a:hover, a:focus, a:active{color:#000; text-decoration:none;}
+img{max-width:50%;}
+
+.empty{display:block; width:40px; height:40px;
+  margin:10px 15px; border-radius:50%;
+  background:url(../images/empty.jpg) 0 0 no-repeat; 
+  background-size:cover;
+
+  // img {
+  // display:block;
+  // width:50px;
+  // height:50px;
+  // margin:0px 0px; 
+  // border-radius:50%;
+  // background-size:cover;
+  // }
+}
+

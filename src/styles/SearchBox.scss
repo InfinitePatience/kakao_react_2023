@@ -1,0 +1,49 @@
+/* main.css */
+@import url(Common.scss);
+
+
+main {
+  height: 85.8%;
+  padding-top: 64px;
+}
+
+/* 검색창 */
+
+.search_box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 7.3%;
+  min-height: 53px;
+}
+
+.search_inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 88%;
+  height: 50%;
+  background-color: #F1F2F4;
+  border-radius: 5px;
+
+  > {
+    i {
+      font-size: 16px;
+      color: #BEBCC1;
+      align-self: center;
+      margin-left: 15px;
+    }
+
+    input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 8px 15px;
+
+      &::placeholder {
+        text-align: center;
+      }
+    }
+  }
+}
