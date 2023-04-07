@@ -12,7 +12,7 @@ function Friends({userObj}) {
     <Header 
     h1 ="Friends" span =" 1" a ="Manage" i = {<FaCog/>} />
     <main><SearchBox />
-    <MainSection />
+    <MainSection userObj={userObj}/>
     </main>
     <Tabbar />
     </>

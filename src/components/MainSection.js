@@ -2,28 +2,28 @@ import React from 'react'
 import '../styles/MainSection.scss';
 import { Link } from 'react-router-dom';
 import Profile from '../data/Profile.json';
-import My from '../data/My.json';
+// import My from '../data/My.json';
 
-function MainSection() {
+function MainSection({userObj}) {
+  console.log(userObj)
   return (
 <>
 <section className="main_section">
   <header><h2>My Profile</h2></header>
   <ul>
-    {My.map((myprof, index) => 
-    <li key={index}>
-    <Link to={"/profile"} state={{id:myprof.id, name:myprof.name, image:myprof.images, comment:myprof.comment, back:myprof.back}}>
-      <span className="profile_img empty" style={{background:`url(${myprof.images})`, backgroundSize:'50px 50px'}}></span>
-      <span className="profile_name">{myprof.name}</span>
-      <span className="profile_messages">{myprof.comment}</span>
-      </Link>
-    </li>
-      )}
     <li>
-    <Link to={"#"}>
+     <Link to={"/Myprofile"} /*state={{id:myprof.id, name:myprof.name, image:myprof.images, comment:myprof.comment, back:myprof.back}}*/>
+      <span className="profile_img empty" /*style={{background:`url(${myprof.images})`, backgroundSize:'50px 50px'}}*/></span>
+      <span className="profile_name">{userObj.displayName}</span>
+      <span className="profile_messages">{/*myprof.comment*/}나다. 이 씹..야</span>
+     </Link>
+    </li>
+
+    <li>
+     <Link to={"#"}>
       <span className="profile_img empty"></span>
       <span className="profile_name">Friends' Names Display</span>
-    </Link>
+     </Link>
     </li>
   </ul>
 </section>

@@ -10,6 +10,7 @@ import Chatting from './routes/Chatting';
 import Auth from './routes/Auth';
 import { authService } from './fbase';
 import { onAuthStateChanged } from 'firebase/auth';
+import Myprofile from './components/Myprofile';
 // import Tabbar from './components/Tabbar';
 
 
@@ -44,6 +45,7 @@ function App() {
         <Route path='/More' element={<More />} />
         <Route path='/Profile' element={<Profile />} />
         <Route path='/Chatting' element={<Chatting />} />
+        <Route path='/Myprofile' element={<Myprofile userObj={userObj}/>} />
           </>
         ) : ( 
           <Route path='/' element={<Auth />} /> // false면 Auth 화면 나옴
