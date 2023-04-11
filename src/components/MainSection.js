@@ -5,7 +5,7 @@ import Profile from '../data/Profile.json';
 // import My from '../data/My.json';
 
 function MainSection({userObj}) {
-  console.log(userObj)
+  console.log('나다->',userObj)
   return (
 <>
 <section className="main_section">
@@ -13,9 +13,9 @@ function MainSection({userObj}) {
   <ul>
     <li>
      <Link to={"/Myprofile"} /*state={{id:myprof.id, name:myprof.name, image:myprof.images, comment:myprof.comment, back:myprof.back}}*/>
-      <span className="profile_img empty" /*style={{background:`url(${myprof.images})`, backgroundSize:'50px 50px'}}*/></span>
+      <span className="profile_img empty" style={{background:`url(${userObj.photoURL})`, backgroundSize:'50px 50px'}}></span>
       <span className="profile_name">{userObj.displayName}</span>
-      <span className="profile_messages">{/*myprof.comment*/}나다. 이 씹..야</span>
+      <span className="profile_messages">{/*myprof.comment*/}챠챠챠</span>
      </Link>
     </li>
 

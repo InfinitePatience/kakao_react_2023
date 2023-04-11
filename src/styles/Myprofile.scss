@@ -1,0 +1,43 @@
+// Myprofile.scss
+.my_prof_edit {
+  z-index:10;
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  position: absolute;
+  border-radius:50%;
+  left:-10px;
+  width:30px;
+  height:30px;
+  background-color:#fff;
+}
+
+
+
+
+.attach-new {
+  .attach-new-image{
+    position:absolute; 
+    width:100px;
+    height:100px;
+    margin:-55px 51px;
+    border-radius:80%;
+    max-width:50%;
+  }
+  .attach-select{
+    .selector{
+      position:absolute;
+      padding:5px 10px;
+      background-color:rgba(26,33,38,0.7);
+      color:#0780ec;
+      border-radius:10px;    
+      top:-17px; 
+    }
+    .attach-cancel {
+      left:28%;
+    }
+    .attach-submit {
+      right:28%;
+    }
+    }
+}

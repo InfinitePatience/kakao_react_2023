@@ -13,6 +13,10 @@ import { onAuthStateChanged } from 'firebase/auth';
 import Myprofile from './components/Myprofile';
 // import Tabbar from './components/Tabbar';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { faTwitter, faGoogle, faGithub } from '@fortawesome/free-brands-svg-icons';
+library.add(fas, faTwitter, faGoogle, faGithub );
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
