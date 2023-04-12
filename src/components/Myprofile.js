@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { updateProfile } from 'firebase/auth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "../styles/Myprofile.scss"
+import Mybackground from './Mybackground';
 
 function Myprofile({userObj}) {
   console.log("아아아아->",userObj)
@@ -59,6 +60,7 @@ function Myprofile({userObj}) {
     }
   }
 
+
   const onImgSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -90,7 +92,7 @@ function Myprofile({userObj}) {
 
   const onChange = (e) => {
     const {target: {value}} = e;
-    setNewDisplayName(value)
+    setNewDisplayName(value);
     setTweet(value);
   }
 
@@ -144,14 +146,16 @@ function Myprofile({userObj}) {
   </div>
 </header>
 
+  
 <main className='main1' /*style={{background:`url(${back})`, backgroundSize:'cover', backgroundPosition:'50% 50%'}}*/>
+    
   <section className="background">
     <h2 className="blind">My profile background image</h2>
   </section>
   <section className="Kprofile">
     <h2 className="blind">My profile info</h2>
     <form onSubmit={onImgSubmit}>
-    <div className="Kprofile_img empty" style={{backgroundImage:`url(${userObj.photoURL})`, backgroundSize:'cover'}}>
+    <div className="Kprofile_img empty" style={{backgroundImage:`url(${userObj.photoURL})`, backgroundSize:'cover'/* border:'1px solid blue'*/}}>
     <label htmlFor='attach-file' className='my_prof_edit'><FontAwesomeIcon icon="fa-solid fa-camera" style={{fontSize:'20px'}} /></label>
     <input type='file' accept='image/*' onChange={onFilechange} id='attach-file' style={{opacity:0}}/>
     </div>

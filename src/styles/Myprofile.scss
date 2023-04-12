@@ -1,4 +1,99 @@
 // Myprofile.scss
+.myheader {
+  background: transparent;
+}
+
+.title_bar > .left_item > a {
+  opacity: 1;
+  font-size: 20px;
+}
+
+
+   
+.mymain {
+  //  height:65vh;
+  //  background-image: url(../images/bg_default.png);
+  //  background-repeat: no-repeat;
+  //  background-position: 0 0;
+  //  background-size: cover;
+
+.mybackground {
+  height:65vh;
+  //  background-image: url(../images/bg_default.png);
+  //  background-repeat: no-repeat;
+  //  background-position: 0 0;
+  //  background-size: cover;
+}
+
+.Kprofile {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+
+
+.Kprofile_img {
+  position: absolute;
+  left: 50%;
+  top: -65px;
+  width: 100px;
+  height: 100px;
+  margin-left: -50px;
+}
+
+.Kprofile_cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 45px;
+
+
+.Kprofile_name {
+  font-size: 16px;
+  margin:5px 0 5px 0;
+}
+
+.Kprofile_cont input {
+  width: 148px;
+  height: 24px;
+  margin: 20px 0 20px;
+  padding: 0 5px;
+  text-align: center;
+  border: none;
+}
+
+.Kprofile_menu {
+  display: flex;
+
+  li {
+    margin: 20px 6px;
+
+    a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-weight: bold;
+    }
+
+    span {
+      display: block;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      line-height: 52px;
+      text-align: center;
+      margin-bottom: 15px;
+      background-color: #F2F2F2;
+      color: #513736;
+      font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
 .my_prof_edit {
   z-index:10;
   display:flex;
@@ -12,15 +107,12 @@
   background-color:#fff;
 }
 
-
-
-
 .attach-new {
   .attach-new-image{
     position:absolute; 
     width:100px;
     height:100px;
-    margin:-55px 51px;
+    margin:-55px 52px;
     border-radius:80%;
     max-width:50%;
   }
