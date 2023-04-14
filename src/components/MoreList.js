@@ -3,15 +3,22 @@ import { Link } from 'react-router-dom';
 import '../styles/MoreList.scss';
 import { FaRegSmile, FaPaintBrush, FaRegHandPeace, FaRegUserCircle, FaRegComment, FaInfoCircle, FaUtensils, FaHome, FaTv, FaPencilAlt, FaGraduationCap, FaLandmark, FaWonSign, FaVideo, FaUser, FaComment, FaSearch, FaEllipsisH } from "react-icons/fa";
 
-function MoreList() {
+function MoreList({props}) {
+  console.log('props->',props)
+  const {
+    userObj : {
+      displayName, email, photoURL
+    }
+  } = props;
+
   return (
 <>
     <section className="user_info">
       <h2 className="blind">사용자 정보</h2>
-      <span className="profile_img empty"></span>
+      <span className="profile_img empty" style={{background:`url(${photoURL})`, backgroundSize:'cover'}}></span>
       <span className="profile_info">
-        <span className="profile_name">My Name</span>
-        <span className="profile_email">Userid@gmail.com</span>
+        <span className="profile_name">{displayName}</span>
+        <span className="profile_email">{email}</span>
       </span>
       <span className="chat_img"><Link to={"#"}><i><FaRegComment /></i></Link></span>
     </section>

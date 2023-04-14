@@ -8,9 +8,8 @@ import { Link } from 'react-router-dom';
 import { updateProfile } from 'firebase/auth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "../styles/Myprofile.scss"
-import Mybackground from './Mybackground';
 
-function Myprofile({userObj}) {
+function MyProfile({userObj}) {
   console.log("아아아아->",userObj)
   // 시간
   const [timer, setTimer] = useState("00:00");
@@ -31,13 +30,18 @@ function Myprofile({userObj}) {
 
   const [tweet, setTweet] = useState('');
   const [tweets, setTweets] = useState([]);
+  const [talk, setTalk] = useState("");
+  const [newBgImg, setNewBgImg] = useState("");
+  const [editing, setEditing] = useState(false);
+  const [bgAttachment, setBgAttachment] = useState("");
+
   const [attachment, setAttachment] = useState(userObj.attachment);
   const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
   const [newPhotoUrl, setNewPhotoUrl] = useState(userObj.photoURL);
 
   useEffect(() => { // useEffect에다 직접 함수를 기재하지 않고 호출만 한다.
     // getTweets();
-    const q = query(collection(db,"tweets"),
+    const q = query(collection(db,"kakao"),
                  orderBy("createdAt","desc"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const newArray = [];
@@ -45,6 +49,7 @@ function Myprofile({userObj}) {
         newArray.push({...doc.data(), id:doc.id});  // (10 -> 9 -> 8 -> 7 -> 6 -> 5 -> ...)
         console.log(newArray)
       });
+      setNewBgImg(newArray[0].attachmentUrl);
       setTweets(newArray);
     });
   },[]);
@@ -59,7 +64,6 @@ function Myprofile({userObj}) {
       });
     }
   }
-
 
   const onImgSubmit = async (e) => {
     e.preventDefault();
@@ -92,7 +96,7 @@ function Myprofile({userObj}) {
 
   const onChange = (e) => {
     const {target: {value}} = e;
-    setNewDisplayName(value);
+    setNewDisplayName(value)
     setTweet(value);
   }
 
@@ -119,10 +123,48 @@ function Myprofile({userObj}) {
 
   // const toggleEditing = () => setEditing((prev) => !prev);
 
+
+  const onBgSubmit = async (e) => {
+    e.preventDefault();
+    let attachmentUrl = "";
+      if(bgAttachment !== ""){
+        const storageRef = ref(storage, `${userObj.uid}/${uuidv4()}`); 
+        const response = await uploadString(storageRef, bgAttachment, 'data_url'); 
+        attachmentUrl = await getDownloadURL(ref(storage, response.ref)); 
+      }
+      const docRef = await addDoc(collection(db, "kakao"), {
+        text: talk,
+        createdAt: Date.now(),
+        creatorId: userObj.uid,  // 문서를 누가 작성했는지 알아내기 위함. userObj는 로그인한 사용자 정보.
+        attachmentUrl
+      });
+    setBgAttachment("");
+  }
+
+  const onBackChange = (e) => {
+    const {target: {files}} = e;
+    const theFile = files[0];
+    const reader = new FileReader(); 
+    reader.onloadend = (finishedEvent) => {
+      const {currentTarget: {result}} = finishedEvent 
+      setBgAttachment(result);
+    }
+    reader.readAsDataURL(theFile); 
+  }
+
+  const onClearBackImg = () => {
+    setBgAttachment("");
+  }
+
+  const toggleEditing = () => {setEditing((prev) => !prev);
+    onclearAttachment();
+    onClearBackImg();
+  }
+    
   return (
     <>
 <body>
-<header className="header1">
+<header className="myheader">
   <div className="status_bar">
     <div className="left_item">
       <i><FaPlane /></i>
@@ -146,18 +188,37 @@ function Myprofile({userObj}) {
   </div>
 </header>
 
-  
-<main className='main1' /*style={{background:`url(${back})`, backgroundSize:'cover', backgroundPosition:'50% 50%'}}*/>
-    
+<main className='mymain' style={{backgroundImage: `url("${newBgImg}")` , backgroundSize:'cover', backgroundPosition:'50% 50%'}}>
+    <form onSubmit={onBgSubmit}>
+    <section className='mymain'>
+      {editing && (
+        <>
+          <label htmlFor='bg-attach' className='mybackcamera'><FontAwesomeIcon icon="fa-solid fa-scissors" style={{fontSize:'20px'}} /></label>
+          <input type='file' accept='image/*' onChange={onBackChange} id='bg-attach' style={{opacity:0}}/>
+        </>
+      )}
+    </section>
+    {bgAttachment && (
+      <section className="mymain mybackimg" style={{backgroundImage: `url("${bgAttachment}")`}}>
+        <input type='submit' value="Edit" />
+        <button onClick={onClearBackImg}>취소</button>
+      </section>
+    )}
+    </form>
+
   <section className="background">
     <h2 className="blind">My profile background image</h2>
   </section>
-  <section className="Kprofile">
+  <section className="myprofile">
     <h2 className="blind">My profile info</h2>
     <form onSubmit={onImgSubmit}>
-    <div className="Kprofile_img empty" style={{backgroundImage:`url(${userObj.photoURL})`, backgroundSize:'cover'/* border:'1px solid blue'*/}}>
-    <label htmlFor='attach-file' className='my_prof_edit'><FontAwesomeIcon icon="fa-solid fa-camera" style={{fontSize:'20px'}} /></label>
+    <div className="myprofile_img empty" style={{backgroundImage:`url(${userObj.photoURL})`, backgroundSize:'cover'/*, border:'1px solid blue'*/}}>
+    {editing && (
+    <>
+    <label htmlFor='attach-file' className='myprofile-edit'><FontAwesomeIcon icon="fa-solid fa-scissors" style={{fontSize:'20px'}} /></label>
     <input type='file' accept='image/*' onChange={onFilechange} id='attach-file' style={{opacity:0}}/>
+    </>
+    )}
     </div>
 
     {attachment && (
@@ -181,21 +242,21 @@ function Myprofile({userObj}) {
     </form>
 
 
-    <div className="Kprofile_cont">
+    <div className="myprofile_cont">
       <form onSubmit={onNameSubmit}>
-      <input type="text" onChange={onChange} value={newDisplayName} placeholder='이름' className="Kprofile_name" />
+      <input type="text" onChange={onChange} value={newDisplayName} placeholder='이름' className="myprofile_name" />
       </form>
-      <input type="mail" className="Kprofile_email" placeholder="UserID@gmail.com" />
-      <ul className="Kprofile_menu">
+      <input type="mail" className="myprofile_email" placeholder="UserID@gmail.com"/>
+      <ul className="myprofile_menu">
       <li>
         <Link to={"#"}>
           <span className="icon">
             <i><FaComment/></i>
           </span>
-          My Chatroom
+          <p>My Chatroom</p>
         </Link>
       </li>
-          <li><Link to={"#"}><span className="icon" ><i><FaPencilAlt /></i></span>Edit Profile</Link></li>
+          <li><Link to={"#"} onClick={toggleEditing}><span className="icon" ><i><FaPencilAlt /></i></span><p>Edit Profile</p></Link></li>
       </ul>
     </div>
   </section>
@@ -206,4 +267,4 @@ function Myprofile({userObj}) {
   )
 }
 
-export default Myprofile
+export default MyProfile

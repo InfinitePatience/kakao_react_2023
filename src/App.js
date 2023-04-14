@@ -46,7 +46,7 @@ function App() {
         <Route path='/' element={<Friends userObj={userObj}/>} />
         <Route path='/Chats' element={<Chats />}  />
         <Route path='/Find' element={<Find />} />
-        <Route path='/More' element={<More />} />
+        <Route path='/More' element={<More userObj={userObj}/>} />
         <Route path='/Profile' element={<Profile />} />
         <Route path='/Chatting' element={<Chatting />} />
         <Route path='/Myprofile' element={<Myprofile userObj={userObj}/>} />
