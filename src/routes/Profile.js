@@ -1,10 +1,10 @@
 import React from 'react'
 import ProfileList from '../components/ProfileList';
 
-function Profile() {
+function Profile({userObj}) {
   return (
   <>
-    <ProfileList />
+    <ProfileList userObj={userObj}/>
   </>
   )
 }

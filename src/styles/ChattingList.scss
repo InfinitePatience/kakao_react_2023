@@ -2,7 +2,8 @@
 @import url(Common.scss);
 
 
-.chatting {
+.chatting_header {
+  z-index:1;
   position:fixed;
   left:0;
   top:0;
@@ -30,8 +31,9 @@
 .chatting1 {
   display:flex; 
   flex-direction:column;
-  height:90vh;
+  height:auto;
   padding-top:64px;
+  padding-bottom:60px;
   background:#A1C0D5;
   
   .date_info {
@@ -47,6 +49,7 @@
     width:fit-content;
     max-width:calc(100% - 80px);
     position:relative;
+    margin-bottom:20px;
     
     .chat {
       font-size:16px;
@@ -57,22 +60,26 @@
       background:#fff;
     }
   }
-  .my{
+  .mytalk{
     align-self:flex-end; 
     align-items:flex-end; 
     max-width:240px; 
     margin-right:10px;
 
-    .chat {
-      background:#FFE73A;
-    }
-    .chat_time {
-      position:absolute; 
-      left:-30px; 
-      bottom:-5px; 
-      width:50px; 
-      opacity:0.5;
-    }
+    // .chat {
+    //   background:#FFE73A;
+  
+    // }
+    // .chat_my {
+    //   margin-top:50px;
+    // }
+    // .chat_time {
+    //   position:absolute; 
+    //   left:-30px; 
+    //   bottom:-5px; 
+    //   width:50px; 
+    //   opacity:0.5;
+    // }
   }
   .other {
     align-self:flex-start;
@@ -113,7 +120,7 @@ footer {
   height:45px; 
   background:#eee;
 
-  .plus_btn a {
+  .plus_btn {
     color:#B3B4B4; 
     padding-left:15px; 
     font-size:16px;
@@ -131,18 +138,16 @@ footer {
         width:100%;
 
        .text_field {
-         width:calc(100% - 40px); 
+        position:absolute;
+         width:calc(100% - 110px); 
+         right:100px;
          height:32px;
        }
        .emoticon_btn {
          position:absolute;
-         right:45px;
-
-        a {
-         color:#B3B4B4;
-        }
+         right:47px;
       }
-      .voice_btn a {
+      .voice_btn {
         display:block; 
         width:34px; 
         height:37px;

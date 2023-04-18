@@ -1,0 +1,55 @@
+//kakao.scss
+
+.ddd{
+  display:flex;
+  align-self:flex-end; 
+  align-items:flex-end; 
+  max-width:240px; 
+  margin-right:10px;
+  margin-top:5px;
+
+  .chatcolor {
+    background:#FFE73A;
+    font-size:16px;
+    line-height:1; 
+    margin:5px; 
+    padding:10px 5px; 
+    border-radius:5px; 
+    line-height:1.2;
+  }
+  .chat_my {
+    margin-top:5px;
+  }
+  .my_chat_time {
+    position:absolute; 
+    margin-left:-45px;
+    margin-bottom:5px;
+    width:50px; 
+    opacity:0.5;
+  }
+}
+// .other {
+//   align-self:flex-start;
+//   top:20px;
+//   left:55px;
+
+//   .profile_img {
+//     position:absolute; 
+//     left:-60px; 
+//     top:-20px; 
+//     width:40px; 
+//     height:40px;
+//   }
+//   .profile_name {
+//     display:block; 
+//     font-weight:bold;
+//     margin:2px 5px 5px;
+//   }
+//   .chat_time {
+//     position:absolute; 
+//     right:-30px; 
+//     bottom:-5px; 
+//     width:50px; 
+//     opacity:0.5;
+//   }
+// }

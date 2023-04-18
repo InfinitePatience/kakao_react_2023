@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import '../styles/ChattingList.scss';
-import { FaAngleLeft, FaBars, FaBatteryFull, FaBluetooth, FaMicrophone, FaMoon, FaPlane, FaPlus, FaRegSmile, FaSearch, FaWifi } from "react-icons/fa";
+import { FaAngleLeft, FaBars, FaBatteryFull, FaBluetooth, FaMicrophone, FaMoon, FaPlane, FaPlus, FaSearch, FaWifi } from "react-icons/fa";
 import { Link, useLocation } from 'react-router-dom';
 import { addDoc, collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { db, storage } from '../fbase';
-import { ref } from 'firebase/database';
 import { v4 as uuidv4 } from 'uuid';
-import { getDownloadURL, uploadString } from 'firebase/storage';
+import { getDownloadURL, uploadString, ref } from 'firebase/storage';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Kakao from './Kakao';
 
 function ChattingList({userObj}) {
+  console.log(userObj)
+
   const location = useLocation();
   const name = location.state.name;
   const image = location.state.image
@@ -28,30 +31,24 @@ function ChattingList({userObj}) {
 
   startTimer()
 
-  const [tweet, setTweet] = useState('');
-  const [tweets, setTweets] = useState([]);
+  const [friends, setFriends] = useState('');
+  const [friendstalk, setFriendsTalk] = useState([]);
   const [attachment, setAttachment] = useState("");
 
   useEffect(() => { // useEffect에다 직접 함수를 기재하지 않고 호출만 한다.
     // getTweets();
-    const q = query(collection(db,"tweets"),
-                 orderBy("createdAt","desc"));
+    const q = query(collection(db,"friendstalk"),
+                 orderBy("createdAt","asc"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const newArray = [];
       querySnapshot.forEach((doc) => { // 문서 하나하나 가져와서 
         newArray.push({...doc.data(), id:doc.id});  // (10 -> 9 -> 8 -> 7 -> 6 -> 5 -> ...)
         console.log(newArray)
       });
-      setTweets(newArray);
+      setFriendsTalk(newArray);
     });
     
   },[]);
-
-  const onChange = e => {
-    e.preventDefault();
-    const {target: {value}} = e;
-    setTweet(value);
-  }
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -63,8 +60,8 @@ function ChattingList({userObj}) {
         console.log('response->', response);
         attachmentUrl = await getDownloadURL(ref(storage, response.ref)); //response.ref 는 https 주소가 됨.
       }
-      const docRef = await addDoc(collection(db, "tweets"), {
-        text:tweet,
+      const docRef = await addDoc(collection(db, "friendstalk"), {
+        text:friends,
         createdAt: Date.now(),
         creatorId: userObj.uid, // 문서를 누가 작성해는지 알아내기 위함. userObj는 로그인한 사용자 정보.
         attachmentUrl
@@ -73,9 +70,16 @@ function ChattingList({userObj}) {
     } catch (e) {
       console.error("Error adding document: ", e);
     }
-    setTweet("");
+    setFriends("");
     setAttachment("");
   }
+
+  const onChange = e => {
+    e.preventDefault();
+    const {target: {value}} = e;
+    setFriends(value);
+  }
+
   const onFilechange = (e) => {
     console.log("e->",e)
     const {target: {files}} = e;
@@ -95,9 +99,15 @@ function ChattingList({userObj}) {
   const onclearAttachment = () => {
     setAttachment(""); // 사진이 안 보이게 하려면 Data URL을 지우면 된다. 따라서 attachment를 공백으로 만들면 안 보이게 됨.
   }
+
+  const scrollBottom = useRef(null) ;
+  useEffect(() => {
+    scrollBottom.current.scrollIntoView({behavior:'smooth'});
+  },[friendstalk])
+  
   return (
   <>
-<header className="chatting">
+<header className="chatting_header">
   <div className="status_bar">
     <div className="left_item">
       <i><FaPlane /></i>
@@ -125,16 +135,16 @@ function ChattingList({userObj}) {
 <main className="chatting1">
   <span className="date_info">Thursday, March 23, 2023</span>
 
-  <div className="chat_box my">
+  {/* <div className="chat_box my">
     <span className="chat">Hello.</span>
     <span className="chat">Hello! This is a test message.<br />Hello!</span>
     <span className="chat">Hello! This is a test message.</span>
     <span className="chat_time"><span>17</span>:<span>33</span></span>
-  </div>
+  </div> */}
 
   <div className="chat_box other">
     <div className="other_info">
-      <Link to={"#"}><span className="profile_img empty" style={{background:`url(${image})`, backgroundSize:'40px 40px'}}></span></Link>
+      <Link to={"/profile"}><span className="profile_img empty" style={{background:`url(${image})`, backgroundSize:'40px 40px'}}></span></Link>
     </div>
       <span className="profile_name">{name}</span>
       <span className="chat">And this is an answer</span>
@@ -143,21 +153,39 @@ function ChattingList({userObj}) {
       <span className="chat_time"><span>17</span>:<span>33</span></span>
   </div>
 
-  <div className="chat_box my">
-    <span className="chat">{tweet}</span>
-    <span className="chat_time"><span>17</span>:<span>33</span></span>
+  <div className="chat_box mytalk">
+  {friendstalk.map(talktalk => (
+          <Kakao key={talktalk.id} talkObj={talktalk} isOwner={talktalk.creatorId === userObj.uid}/> 
+        ))}
+    {/* <span className="chat chat_my">{friends}</span>
+    <span className="chat_time"><span>17</span>:<span>33</span></span> */}
   </div>
+  <div ref={scrollBottom}></div>
 </main>
 
 <footer>
-  <span className="plus_btn"><Link to={"#"}><i><FaPlus /></i></Link></span>
+  <div>
+  <label className="plus_btn">
+  <FontAwesomeIcon icon="fa-solid fa-plus" />
+  <input type='file' onChange={onFilechange} style={{display:`none`}}/>
+  </label>
+  </div>
   <form onSubmit={onSubmit}>
   <fieldset className="text_box">
   <legend className="blind">채팅 입력창</legend>
     <label for="chatting" className="blind">채팅 입력</label>
-    <input type="text" id="chatting" className="text_field" value={tweet} onChange={onChange}/>
-    <span className="emoticon_btn"><Link to={"#"}><i><FaRegSmile /></i></Link></span>
+    <input type="text" id="chatting" className="text_field" value={friends} onChange={onChange}/>
+    <input type="submit" className="emoticon_btn" value={'전송'} onChange={onChange}/>
     <span className="voice_btn"><Link to={"#"}><i><FaMicrophone /></i></Link></span>
+
+
+
+    {attachment && (
+      <div className='chatting_attach'>
+        <img src={attachment} width="70" height="60" alt="" />
+        <button onClick={onclearAttachment} className='chatting_button'>Remove</button>  
+        </div>
+      )}
   </fieldset>
   </form>
 </footer>

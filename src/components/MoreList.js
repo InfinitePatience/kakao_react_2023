@@ -20,7 +20,7 @@ function MoreList({props}) {
         <span className="profile_name">{displayName}</span>
         <span className="profile_email">{email}</span>
       </span>
-      <span className="chat_img"><Link to={"#"}><i><FaRegComment /></i></Link></span>
+      <span className="chat_img"><Link to={"/Chats"}><i><FaRegComment /></i></Link></span>
     </section>
 
     <section className="user_menu">

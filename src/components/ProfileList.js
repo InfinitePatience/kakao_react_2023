@@ -3,12 +3,13 @@ import '../styles/ProfileList.scss';
 import { Link, useLocation } from 'react-router-dom';
 import { FaBatteryFull, FaBluetooth, FaCog, FaComment, FaMoon, FaPencilAlt, FaPlane, FaTimes, FaWifi, } from "react-icons/fa";
 
-function ProfileList() {
+function ProfileList({userObj}) {
   const location = useLocation();
   const name = location.state.name;
   const image = location.state.image;
   const comment = location.state.comment;
   const back = location.state.back;
+  
 
   const [timer, setTimer] = useState("00:00");
   const currentTimer = () => {

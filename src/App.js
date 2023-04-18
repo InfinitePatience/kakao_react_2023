@@ -47,8 +47,8 @@ function App() {
         <Route path='/Chats' element={<Chats />}  />
         <Route path='/Find' element={<Find />} />
         <Route path='/More' element={<More userObj={userObj}/>} />
-        <Route path='/Profile' element={<Profile />} />
-        <Route path='/Chatting' element={<Chatting />} />
+        <Route path='/Profile' element={<Profile userObj={userObj}/>} />
+        <Route path='/Chatting' element={<Chatting userObj={userObj}/>} />
         <Route path='/Myprofile' element={<Myprofile userObj={userObj}/>} />
           </>
         ) : ( 
