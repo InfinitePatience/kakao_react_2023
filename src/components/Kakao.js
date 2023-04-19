@@ -6,6 +6,7 @@ import { deleteObject,ref } from 'firebase/storage';
 import ChattingList from './ChattingList';
 import "../styles/kakao.scss";
 import moment from 'moment/moment';
+import { useLocation } from 'react-router-dom';
 
 function Kakao(props) {
   console.log("props->", props);
@@ -17,11 +18,14 @@ function Kakao(props) {
   const [editing, setEditing] = useState(false);
   const [newTalk, setNewTalk] = useState(text);
   const [nowDate, setNowDate] = useState(createdAt);
+  const location = useLocation();
+  const chatId = location.state.id;
+  console.log("sdsd",location)
 
   const onDeleteClick = async () => {
     const ok = window.confirm("삭제하시겠습니까?");
     if(ok){
-      const data = await deleteDoc(doc(db, "friendstalk", `/${id}`)); // 폴더 안에 있는 id에 해당되는 문서를 삭제하기 위함. 폴더/문서 구조이기 때문에 앞에 /를 붙인다. 연필 아이콘 눌러보면 그렇게 나옴.
+      const data = await deleteDoc(doc(db, `friendstalk${chatId}`, `/${id}`)); // 폴더 안에 있는 id에 해당되는 문서를 삭제하기 위함. 폴더/문서 구조이기 때문에 앞에 /를 붙인다. 연필 아이콘 눌러보면 그렇게 나옴.
       if(attachmentUrl !== ""){
         const desertRef = ref(storage, attachmentUrl);
         await deleteObject(desertRef);
@@ -38,7 +42,7 @@ function Kakao(props) {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const newTweetRef = doc(db, "kakaos", `/${id}`);
+    const newTweetRef = doc(db, `friendstalk${chatId}`, `/${id}`);
 
     await updateDoc(newTweetRef, {
       text: newTalk,

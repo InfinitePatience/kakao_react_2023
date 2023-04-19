@@ -12,7 +12,7 @@ function ChatsList() {
     <ul>
       {profile.map((prof, index)=> 
 <li key={index}>
- <Link to={"/Chatting"} state={{name:prof.name, image:prof.images, comment:prof.comment}}> 
+ <Link to={"/Chatting"} state={{name:prof.name, image:prof.images, comment:prof.comment, id:prof.id}}> 
    <span className="chats_img empty" style={{background:`url(${prof.images})`, backgroundSize: '50px 50px'}}></span>
    <span className="chats_cont">
      <span className="chats_name">{prof.name}</span>

@@ -23,7 +23,11 @@
     }
   }
 
-  // .profile_img {}
+  .empty {
+    background-image:url(../images/empty.jpg);
+    background-repeat:no-repeat;
+    background-position:0 0 ;
+  }
 
   .profile_name {
     flex: auto;

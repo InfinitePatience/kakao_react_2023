@@ -1,6 +1,6 @@
 // Myprofile.scss
 .myheader {
-  background-color:rgba(0,0,0, 0.3);
+  background-color:rgba(0,0,0, 0.4);
 }
 
 .title_bar > .left_item > a {
@@ -15,7 +15,7 @@
    background-repeat: no-repeat;
    background-position: 0 0;
    background-size: cover;
-   background-color:rgba(0,0,0, 0.3);
+   background-color:rgba(0,0,0, 0.4);
 
   .mybackimg { 
     position: absolute;
@@ -77,7 +77,7 @@
   text-align: center;
 
   &::placeholder{
-    text-shadow:1px 1px 1px rgba(0,0,0, 0.6 );
+    text-shadow:1px 1px 1px rgb(0,0,0 );
     color:#f2f2f2;
   }
 }

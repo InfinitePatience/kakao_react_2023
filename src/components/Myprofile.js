@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { db, storage } from '../fbase';
-import { getDownloadURL, uploadString, ref } from 'firebase/storage';
-import { addDoc, collection, doc, onSnapshot, orderBy, query, updateDoc } from 'firebase/firestore';
+import { getDownloadURL, uploadString, ref, deleteObject, getStorage } from 'firebase/storage';
+import { addDoc, collection, deleteDoc, doc, onSnapshot, orderBy, query, updateDoc } from 'firebase/firestore';
 import { v4 as uuidv4 } from 'uuid';
 import { FaBatteryFull, FaBluetooth, FaCog, FaComment, FaMoon, FaPencilAlt, FaPlane, FaTimes, FaWifi, } from "react-icons/fa";
 import { Link } from 'react-router-dom';
@@ -41,7 +41,7 @@ function MyProfile({userObj}) {
 
   useEffect(() => { // useEffect에다 직접 함수를 기재하지 않고 호출만 한다.
     // getTweets();
-    const q = query(collection(db,"kakao"),
+    const q = query(collection(db,"backimg"),
                  orderBy("createdAt","desc"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const newArray = [];
@@ -49,11 +49,12 @@ function MyProfile({userObj}) {
         newArray.push({...doc.data(), id:doc.id});  // (10 -> 9 -> 8 -> 7 -> 6 -> 5 -> ...)
         console.log(newArray)
       });
-      setNewBgImg(newArray[0].attachmentUrl);
+      if (newArray && newArray.length > 0 && newArray[0].attachmentUrl) {
+        setNewBgImg(newArray[0].attachmentUrl);
+      }
       setTweets(newArray);
     });
-  },[]);
-
+  },[newBgImg]);
   
   const onNameSubmit = async (e) => {
     e.preventDefault();
@@ -128,11 +129,11 @@ function MyProfile({userObj}) {
     e.preventDefault();
     let attachmentUrl = "";
       if(bgAttachment !== ""){
-        const storageRef = ref(storage, `${userObj.uid}/${uuidv4()}`); 
+        const storageRef = ref(storage, `${userObj.uid}/test`); 
         const response = await uploadString(storageRef, bgAttachment, 'data_url'); 
         attachmentUrl = await getDownloadURL(ref(storage, response.ref)); 
       }
-      const docRef = await addDoc(collection(db, "kakao"), {
+      const docRef = await addDoc(collection(db, "backimg"), {
         text: talk,
         createdAt: Date.now(),
         creatorId: userObj.uid,  // 문서를 누가 작성했는지 알아내기 위함. userObj는 로그인한 사용자 정보.
@@ -160,6 +161,17 @@ function MyProfile({userObj}) {
     onclearAttachment();
     onClearBackImg();
   }
+
+const onDeleteClick = async() => {
+const storage = getStorage();
+
+// Create a reference to the file to delete
+const desertRef = ref(storage, `${userObj.uid}/test`);
+
+// Delete the file
+await deleteObject(desertRef).then(() => {}).catch((error) => {});
+setNewBgImg("");
+}
     
   return (
     <>
@@ -188,13 +200,14 @@ function MyProfile({userObj}) {
   </div>
 </header>
 
-<main className='mymain' style={{backgroundImage: `url("${newBgImg}")` , backgroundSize:'cover', backgroundPosition:'50% 50%'}}>
+<main className='mymain' style={newBgImg ? {backgroundImage: `url("${newBgImg}")` , backgroundSize:'cover', backgroundPosition:'50% 50%'}:null}>
     <form onSubmit={onBgSubmit}>
     <section className='mymain'>
       {editing && (
         <>
           <label htmlFor='bg-attach' className='mybackcamera'><FontAwesomeIcon icon="fa-solid fa-scissors" style={{fontSize:'20px'}} /></label>
           <input type='file' accept='image/*' onChange={onBackChange} id='bg-attach' style={{opacity:0}}/>
+          <button onClick={onDeleteClick}>삭제</button>
         </>
       )}
     </section>

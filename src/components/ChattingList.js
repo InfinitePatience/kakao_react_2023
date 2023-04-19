@@ -10,12 +10,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Kakao from './Kakao';
 
 function ChattingList({userObj}) {
-  console.log(userObj)
+  // console.log("dddd",props)
 
   const location = useLocation();
   const name = location.state.name;
   const image = location.state.image
-
+  const id = location.state.id;
+ 
+  console.log(location)
   const [timer, setTimer] = useState("00:00");
   const currentTimer = () => {
     const date = new Date();
@@ -37,7 +39,7 @@ function ChattingList({userObj}) {
 
   useEffect(() => { // useEffect에다 직접 함수를 기재하지 않고 호출만 한다.
     // getTweets();
-    const q = query(collection(db,"friendstalk"),
+    const q = query(collection(db,`friendstalk${id}`),
                  orderBy("createdAt","asc"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const newArray = [];
@@ -60,7 +62,7 @@ function ChattingList({userObj}) {
         console.log('response->', response);
         attachmentUrl = await getDownloadURL(ref(storage, response.ref)); //response.ref 는 https 주소가 됨.
       }
-      const docRef = await addDoc(collection(db, "friendstalk"), {
+      const docRef = await addDoc(collection(db, `friendstalk${id}`), {
         text:friends,
         createdAt: Date.now(),
         creatorId: userObj.uid, // 문서를 누가 작성해는지 알아내기 위함. userObj는 로그인한 사용자 정보.
@@ -144,7 +146,7 @@ function ChattingList({userObj}) {
 
   <div className="chat_box other">
     <div className="other_info">
-      <Link to={"/profile"}><span className="profile_img empty" style={{background:`url(${image})`, backgroundSize:'40px 40px'}}></span></Link>
+      <Link to={`/Profile`}><span className="profile_img empty" style={{background:`url(${image})`, backgroundSize:'40px 40px'}}></span></Link>
     </div>
       <span className="profile_name">{name}</span>
       <span className="chat">And this is an answer</span>
@@ -152,6 +154,7 @@ function ChattingList({userObj}) {
       <span className="chat">And this is an answer</span>
       <span className="chat_time"><span>17</span>:<span>33</span></span>
   </div>
+
 
   <div className="chat_box mytalk">
   {friendstalk.map(talktalk => (
