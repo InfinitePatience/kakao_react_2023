@@ -41,7 +41,7 @@ function MainSection({userObj}) {
   <ul>
     {Profile.map((prof, index) => 
     <li key={index}>
-      <Link to={"/profile"} state={{id:prof.id, name:prof.name, image:prof.images, comment:prof.comment, back:prof.back}}>
+      <Link to={`/profile/${prof.id}`} state={{id:prof.id, name:prof.name, image:prof.images, comment:prof.comment, back:prof.back}}>
       <span className="profile_img empty" style={{background:`url(${prof.images})`, backgroundSize: '50px 50px'}} ></span>
       <span className="profile_name">{prof.name}</span>
       <span className="profile_messages">{prof.comment}</span>

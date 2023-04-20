@@ -13,7 +13,9 @@ function Chats() {
     <main><SearchBox />
     <ChatsList />
     </main>
+    <div className='ChatTab'>
     <Tabbar />
+    </div>
     </>
   )
 }

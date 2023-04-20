@@ -6,7 +6,7 @@ body > header {
   height:64px;
   display:flex;
   flex-direction:column;
-  background:#513736;
+  background:#655987;
   color:#fff;
   padding:0 15px;
   box-sizing:border-box;
@@ -48,10 +48,15 @@ body > header {
   justify-content:space-between;
   align-items:center;
   height:62.5%;
+  color: #72482f;
+  font-family: 'Poor Story', cursive;
+  font-size:23px;
+  letter-spacing:1.5px;
 
   * {
     flex:1;
-    font-size:16px;
+    font-size:20px;
+    color:#fff;
     // border:1px solid red;
   }
 

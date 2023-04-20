@@ -2,10 +2,6 @@
 @import url(Common.scss);
 
 
-// .tab_bar > ul > li:nth-child(4) > a {
-//   color: #513736;
-// }
-
 main {
   height: 85.8%;
   padding-top: 64px;
@@ -29,12 +25,14 @@ main {
   flex-direction: column;
 
   .profile_name {
-    font-size: 16px;
+    font-family: 'Poor Story', cursive;
+    font-size:17px;
     font-weight: bold;
+    color:#fff;
   }
 
   .profile_email {
-    color: #8E9399;
+    color: #000;
   }
 }
 
@@ -166,4 +164,8 @@ main {
       background-image: url(../images/kakaofriends.png);
     }
   }
+}
+
+.MoreTab .tab_bar > ul > li:nth-child(4) > a {
+  color: #655987;
 }

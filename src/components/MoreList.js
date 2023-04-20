@@ -1,7 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/MoreList.scss';
 import { FaRegSmile, FaPaintBrush, FaRegHandPeace, FaRegUserCircle, FaRegComment, FaInfoCircle, FaUtensils, FaHome, FaTv, FaPencilAlt, FaGraduationCap, FaLandmark, FaWonSign, FaVideo, FaUser, FaComment, FaSearch, FaEllipsisH } from "react-icons/fa";
+import { authService } from '../fbase';
 
 function MoreList({props}) {
   console.log('props->',props)
@@ -10,17 +11,24 @@ function MoreList({props}) {
       displayName, email, photoURL
     }
   } = props;
+  const navigate = useNavigate();
+
+  const onLogOutClick = () => {
+    authService.signOut(); // signOut(); 메소드를 사용하면 로그아웃 시킬 수 있다. 로컬 스토리지도 비워짐.
+    navigate('/'); // 첫화면으로 이동 즉 리다이렉트 기능이다. ES6(최신) 버전에서만 사용 가능.
+  }
 
   return (
 <>
     <section className="user_info">
       <h2 className="blind">사용자 정보</h2>
-      <span className="profile_img empty" style={{background:`url(${photoURL})`, backgroundSize:'cover'}}></span>
+      <span className="profile_img empty" style={photoURL ? {background:`url(${photoURL})`, backgroundSize:'cover'}:null}></span>
       <span className="profile_info">
         <span className="profile_name">{displayName}</span>
         <span className="profile_email">{email}</span>
       </span>
       <span className="chat_img"><Link to={"/Chats"}><i><FaRegComment /></i></Link></span>
+      <span className="Log_Out" onClick={onLogOutClick}>LogOut</span>
     </section>
 
     <section className="user_menu">

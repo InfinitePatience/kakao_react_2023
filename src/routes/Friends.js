@@ -29,11 +29,13 @@ function Friends({userObj}) {
   return (
     <>
     <Header 
-    h1 ="Friends" span =" 1" a ="Manage" i = {<FaCog/>} />
+    h1 ="Friends" span =" 6" a ="Manage" i = {<FaCog/>} />
     <main><SearchBox />
     <MainSection userObj={userObj}/>
     </main>
+    <div className='FriendsTab'>
     <Tabbar />
+    </div>
     </>
   )
 }

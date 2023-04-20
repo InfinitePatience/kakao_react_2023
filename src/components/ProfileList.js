@@ -3,14 +3,17 @@ import '../styles/ProfileList.scss';
 import { Link, useLocation } from 'react-router-dom';
 import { FaBatteryFull, FaBluetooth, FaCog, FaComment, FaMoon, FaPencilAlt, FaPlane, FaTimes, FaWifi, } from "react-icons/fa";
 
-function ProfileList() {
-  // console.log("pppp",props)
-  const location = useLocation();
-  const name = location.state.name;
-  const image = location.state.image;
-  const comment = location.state.comment;
-  const back = location.state.back;
+function ProfileList(props) {
+  console.log("pppp",props)
+  // const location = useLocation();
+  // const name = location.state.name;
+  // const image = location.state.image;
+  // const comment = location.state.comment;
+  // const back = location.state.back;
 
+  const {
+    id,name,image,back
+  } = props;
 
   const [timer, setTimer] = useState("00:00");
   const currentTimer = () => {
@@ -66,7 +69,7 @@ function ProfileList() {
       <input type="mail" className="Kprofile_email" placeholder="UserID@gmail.com" />
       <ul className="Kprofile_menu">
       <li>
-        <Link to={"#"}>
+        <Link to={`/Chatting/${id}`}>
           <span className="icon">
             <i><FaComment/></i>
           </span>

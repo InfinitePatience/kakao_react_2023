@@ -9,15 +9,16 @@ import { getDownloadURL, uploadString, ref } from 'firebase/storage';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Kakao from './Kakao';
 
-function ChattingList({userObj}) {
-  // console.log("dddd",props)
-
-  const location = useLocation();
-  const name = location.state.name;
-  const image = location.state.image
-  const id = location.state.id;
+function ChattingList(props) {
+  console.log("dddd",props)
+  const {
+    id,name,image,back,userObj
+  } = props;
+  // const location = useLocation();
+  // const name = location.state.name;
+  // const image = location.state.image
+  // const id = location.state.id;
  
-  console.log(location)
   const [timer, setTimer] = useState("00:00");
   const currentTimer = () => {
     const date = new Date();
@@ -127,7 +128,7 @@ function ChattingList({userObj}) {
   </div>
 
   <div className="title_bar">
-    <h1>Friend Name</h1>
+    <h1>{name}</h1>
     <div className="left_item"><Link to={"/Chats"}><i><FaAngleLeft /></i></Link></div>
     <div className="right_item"><Link to={"#"}><i><FaSearch /></i>&emsp;<i><FaBars /></i></Link></div>
   </div>
@@ -146,10 +147,20 @@ function ChattingList({userObj}) {
 
   <div className="chat_box other">
     <div className="other_info">
-      <Link to={`/Profile`}><span className="profile_img empty" style={{background:`url(${image})`, backgroundSize:'40px 40px'}}></span></Link>
+      <Link to={`/Profile/${id}`}><span className="profile_img empty" style={{background:`url(${image})`, backgroundSize:'40px 40px'}}></span></Link>
     </div>
       <span className="profile_name">{name}</span>
       <span className="chat">And this is an answer</span>
+      <span className="chat">And this is an answer And this is answer</span>
+      <span className="chat">And this is an answer</span>
+      <span className="chat">And this is an answer</span>
+      <span className="chat">And this is an answer</span>
+      <span className="chat">And this is an answer</span>
+      <span className="chat">And this is an answer</span>
+      <span className="chat">And this is an answer</span>
+      <span className="chat">And this is an answer</span>
+      <span className="chat">And this is an answer And this is answer</span>
+      <span className="chat">And this is an answer And this is answer</span>
       <span className="chat">And this is an answer And this is answer</span>
       <span className="chat">And this is an answer</span>
       <span className="chat_time"><span>17</span>:<span>33</span></span>

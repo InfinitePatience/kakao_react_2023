@@ -55,6 +55,24 @@ function MyProfile({userObj}) {
       setTweets(newArray);
     });
   },[newBgImg]);
+
+  useEffect(() => { // useEffect에다 직접 함수를 기재하지 않고 호출만 한다.
+    // getTweets();
+    const q = query(collection(db,"mypProfileimg"),
+                 orderBy("createdAt","desc"));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const newArray = [];
+      querySnapshot.forEach((doc) => { // 문서 하나하나 가져와서 
+        newArray.push({...doc.data(), id:doc.id});  // (10 -> 9 -> 8 -> 7 -> 6 -> 5 -> ...)
+        console.log(newArray)
+      });
+      if (newArray && newArray.length > 0 && newArray[0].newPhotoUrl) {
+        setNewPhotoUrl(newArray[0].newPhotoUrl);
+      }
+      setTweets(newArray);
+    });
+  },[newPhotoUrl]);
+  
   
   const onNameSubmit = async (e) => {
     e.preventDefault();
@@ -71,7 +89,7 @@ function MyProfile({userObj}) {
     try {
       let newPhotoUrl = "";
       if(attachment !== ""){
-        const storageRef = ref(storage, `${userObj.uid}/${uuidv4()}`); //경로 생성.  ${uuidv4()} - 아이디를 자동생성해주는 모듈.   경로 지정. uuidv4는 설치한 uuid 통해 자동생성되는 uid. [userObj.uid 폴더/uuidv4() 문서] 로 경로를 만들어서 보냄.
+        const storageRef = ref(storage, `${userObj.uid}/myprofileimg`); //경로 생성.  ${uuidv4()} - 아이디를 자동생성해주는 모듈.   경로 지정. uuidv4는 설치한 uuid 통해 자동생성되는 uid. [userObj.uid 폴더/uuidv4() 문서] 로 경로를 만들어서 보냄.
         const response = await uploadString(storageRef, attachment, 'data_url'); // attachment를 storage에 저장
         console.log('response->', response);
         newPhotoUrl = await getDownloadURL(ref(storage, response.ref)); //response.ref 는 https 주소가 됨. https 주소를 가져옴.
@@ -80,7 +98,7 @@ function MyProfile({userObj}) {
         });
       }
 
-      const docRef = await addDoc(collection(db, "tweets"), {
+      const docRef = await addDoc(collection(db, "mypProfileimg"), {
         text: tweet,
         createdAt: Date.now(),
         creatorId: userObj.uid,  // 문서를 누가 작성했는지 알아내기 위함. userObj는 로그인한 사용자 정보.
@@ -172,6 +190,21 @@ const desertRef = ref(storage, `${userObj.uid}/test`);
 await deleteObject(desertRef).then(() => {}).catch((error) => {});
 setNewBgImg("");
 }
+
+const onDeleteProfile = async() => {
+  const storage = getStorage();
+  
+  // Create a reference to the file to delete
+  const desertRef = ref(storage, `${userObj.uid}/myprofileimg`);
+  
+  // Delete the file
+  await deleteObject(desertRef).then(() => {}).catch((error) => {});
+  await updateProfile(userObj,{
+    photoURL:''
+  });
+  setEditing((prev) => !prev);
+  setNewPhotoUrl("");
+  }
     
   return (
     <>
@@ -225,11 +258,12 @@ setNewBgImg("");
   <section className="myprofile">
     <h2 className="blind">My profile info</h2>
     <form onSubmit={onImgSubmit}>
-    <div className="myprofile_img empty" style={{backgroundImage:`url(${userObj.photoURL})`, backgroundSize:'cover'/*, border:'1px solid blue'*/}}>
+    <div className="myprofile_img empty" style={newPhotoUrl ? {backgroundImage:`url(${newPhotoUrl})`, backgroundSize:'cover'/*, border:'1px solid blue'*/}:null}>
     {editing && (
     <>
     <label htmlFor='attach-file' className='myprofile-edit'><FontAwesomeIcon icon="fa-solid fa-scissors" style={{fontSize:'20px'}} /></label>
     <input type='file' accept='image/*' onChange={onFilechange} id='attach-file' style={{opacity:0}}/>
+    <button onClick={onDeleteProfile}>삭제</button>
     </>
     )}
     </div>

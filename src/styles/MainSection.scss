@@ -1,18 +1,28 @@
+body { 
+  background:#a07096;
+}
 .main_section {
+    background:#a07096;
   > {
     header {
       height: 32px;
       line-height: 32px;
       padding-left: 15px;
-      border: 1px solid #ebebeb;
       border-left: none;
       border-right: none;
-      color: #B6B5B1;
+      color: #72482f;
+      font-family: 'Poor Story', cursive;
+      font-size:23px;
     }
 
     ul {
       display: flex;
       flex-direction: column;
+      border:none !important;
+
+      li {
+        border:none !important;
+      }
 
       > li > a {
         display: flex;
@@ -26,11 +36,15 @@
   .empty {
     background-image:url(../images/empty.jpg);
     background-repeat:no-repeat;
-    background-position:0 0 ;
+    background-position:0 0;
   }
 
   .profile_name {
     flex: auto;
+    color:#eee;
+    font-family: 'Poor Story', cursive;
+    font-size:17px;
+    font-weight:bold;
   }
 
   .profile_messages {
@@ -40,11 +54,12 @@
     padding: 0 10px;
     border-radius: 5px;
     background: #F0F0F0;
-    font-size: 11px;
+    font-family: 'Poor Story', cursive;
+    font-size: 15px;
     color: #8E9399;
   }
 }
 
-// .tab_bar > ul > li:nth-child(1) > a {
-//   color: #513736;
-// }
+.FriendsTab .tab_bar > ul > li:nth-child(1) > a {
+  color: #655987;
+}

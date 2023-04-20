@@ -5,17 +5,18 @@ import Friends from './routes/Friends';
 import Chats from './routes/Chats';
 import Find from './routes/Find';
 import More from './routes/More';
-import Profile from './routes/Profile';
-import Chatting from './routes/Chatting';
 import Auth from './routes/Auth';
 import { authService } from './fbase';
 import { onAuthStateChanged } from 'firebase/auth';
 import Myprofile from './components/Myprofile';
+import ProfileList from './components/ProfileList';
+import profile from './data/Profile.json';
 // import Tabbar from './components/Tabbar';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faGoogle, faGithub } from '@fortawesome/free-brands-svg-icons';
+import ChattingList from './components/ChattingList';
 library.add(fas, faTwitter, faGoogle, faGithub );
 
 function App() {
@@ -47,8 +48,24 @@ function App() {
         <Route path='/Chats' element={<Chats />}  />
         <Route path='/Find' element={<Find />} />
         <Route path='/More' element={<More userObj={userObj}/>} />
-        <Route path='/Profile' element={<Profile userObj={userObj}/>} />
-        <Route path='/Chatting' element={<Chatting userObj={userObj}/>} />
+        {profile.map((prof) => (
+          <Route 
+            key={prof.id}
+            path={`/Profile/${prof.id}`} 
+            element={<ProfileList userObj={userObj}
+            id={prof.id} name={prof.name} image={prof.images} back={prof.back} />}
+          />
+        ))}
+
+        {profile.map((prof) => (
+        <Route 
+          key={prof.id}
+          path={`/Chatting/${prof.id}`} 
+          element={<ChattingList userObj={userObj}
+          id={prof.id} name={prof.name} image={prof.images} back={prof.back} />} 
+          
+          />
+        ))}
         <Route path='/Myprofile' element={<Myprofile userObj={userObj}/>} />
           </>
         ) : ( 

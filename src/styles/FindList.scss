@@ -1,9 +1,7 @@
 /* find.css */
 @import url(Common.scss);
 
-// .tab_bar > ul > li:nth-child(3) > a {
-//   color: #513736;
-// }
+
 
 main {
   height: 85.8%;
@@ -17,17 +15,19 @@ main {
   flex-direction: row;
   align-items: center;
   height: 80px;
-  background: #eee;
+  background:#a07096;
+  font-family: 'Poor Story', cursive;
+  font-size:17px;
 
   > li {
-    overflow: hidden;
+    overflow:hidden;
     flex: 1;
 
     > a {
       display: flex;
       flex-direction: column;
       align-items: center;
-      color: #513736;
+      color: #fdceba;
       transition: transform 300ms linear 0s;
 
       &:hover {
@@ -49,7 +49,9 @@ main {
     height: 22px;
     line-height: 22px;
     text-indent: 15px;
-    color: #8E9399;
+    font-family: 'Poor Story', cursive;
+    font-size:17px;
+    color: #000;
   }
 
   ul > li {
@@ -58,7 +60,13 @@ main {
     border-top: 1px solid #ebebeb;
     border-bottom: 1px solid #ebebeb;
     text-align: center;
-    color: #8E9399;
-    font-size: 14px;
+    color: #000;
+    font-family: 'Poor Story', cursive;
+    font-size:17px;
   }
+}
+
+
+.FindTab .tab_bar > ul > li:nth-child(3) > a {
+  color: #655987;
 }

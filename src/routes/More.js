@@ -12,7 +12,9 @@ function More(props) {
     <main>
     <MoreList props={props}/>
     </main>
+    <div className='MoreTab'>
     <Tabbar />
+    </div>
     </>
   )
 }

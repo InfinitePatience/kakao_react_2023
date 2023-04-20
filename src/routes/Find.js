@@ -11,7 +11,9 @@ function Find() {
     <main>
     <FindList />
     </main>
+    <div className='FindTab'>
     <Tabbar />
+    </div>
     </>
   )
 }
