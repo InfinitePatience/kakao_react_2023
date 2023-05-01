@@ -3,7 +3,7 @@
 
 
 .header1 {
-  background: transparent;
+ background-color:rgba(0,0,0, 0.5);
 }
 
 .title_bar > .left_item > a {
@@ -12,15 +12,18 @@
 }
 
 .main1 {
-  height:65vh;
-
+  height:93.8vh;
   background-image: url(../images/bg_default.png); 
   background-repeat: no-repeat;
   background-position: 0 0;
   background-size:cover;
 
 .background {
+   background-color:rgba(0,0,0, 0.5);
+   position: relative;
    height:65vh;
+  //  width:100vw;
+
   //  background-image: url(../images/bg_default.png);
   //  background-repeat: no-repeat;
   //  background-position: 0 0;
@@ -31,7 +34,9 @@
   display: flex;
   justify-content: center;
   position: relative;
+  height:28.9vh;
   width: 100%;
+  background-color:rgba(0,0,0, 0.5);
 
 
 .Kprofile_img {
@@ -43,6 +48,22 @@
   margin-left: -50px;
 }
 
+.Kprofile_email {
+  font-family: 'Poor Story', cursive;
+  font-weight:bold;
+  font-size: 25px;
+  margin:5px 0 5px 0;
+  color:#eee;
+  background-color:transparent;
+  border:none;
+  
+
+  &::placeholder {
+    text-align: center;
+    color:#eee;
+  }
+}
+
 .Kprofile_cont {
   display: flex;
   flex-direction: column;
@@ -51,8 +72,11 @@
 
 
 .Kprofile_name {
-  font-size: 16px;
+  font-family: 'Poor Story', cursive;
+  font-weight:bold;
+  font-size: 25px;
   margin:5px 0 5px 0;
+  color:#eee;
 }
 
 .Kprofile_cont input {
@@ -85,10 +109,17 @@
       line-height: 52px;
       text-align: center;
       margin-bottom: 15px;
-      background-color: #F2F2F2;
-      color: #513736;
+      background-color: #655987;
+      color: #fdceba;
       font-size: 20px;
           }
+
+    p {
+      font-family: 'Poor Story', cursive;
+      font-weight:bold;
+      font-size: 25px;
+      color:#eee;
+    }
         }
       }
     }

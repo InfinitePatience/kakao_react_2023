@@ -238,16 +238,16 @@ const onDeleteProfile = async() => {
     <section className='mymain'>
       {editing && (
         <>
-          <label htmlFor='bg-attach' className='mybackcamera'><FontAwesomeIcon icon="fa-solid fa-scissors" style={{fontSize:'20px'}} /></label>
+          <label htmlFor='bg-attach' className='mybackscissors'><FontAwesomeIcon icon="fa-solid fa-scissors"/></label>
           <input type='file' accept='image/*' onChange={onBackChange} id='bg-attach' style={{opacity:0}}/>
-          <button onClick={onDeleteClick}>삭제</button>
+          <button onClick={onDeleteClick} className='mybacktrash'><FontAwesomeIcon icon="fa-solid fa-trash" /></button>
         </>
       )}
     </section>
     {bgAttachment && (
       <section className="mymain mybackimg" style={{backgroundImage: `url("${bgAttachment}")`}}>
-        <input type='submit' value="Edit" />
-        <button onClick={onClearBackImg}>취소</button>
+        <input type='submit' className='attach-back-img submit' value="확인" />
+        <button onClick={onClearBackImg} className='attach-back-img cancel'>취소</button>
       </section>
     )}
     </form>
@@ -261,9 +261,9 @@ const onDeleteProfile = async() => {
     <div className="myprofile_img empty" style={newPhotoUrl ? {backgroundImage:`url(${newPhotoUrl})`, backgroundSize:'cover'/*, border:'1px solid blue'*/}:null}>
     {editing && (
     <>
-    <label htmlFor='attach-file' className='myprofile-edit'><FontAwesomeIcon icon="fa-solid fa-scissors" style={{fontSize:'20px'}} /></label>
+    <label htmlFor='attach-file' className='myprofile-scissors'><FontAwesomeIcon icon="fa-solid fa-scissors" /* style={{fontSize:'20px'}} */ /></label>
     <input type='file' accept='image/*' onChange={onFilechange} id='attach-file' style={{opacity:0}}/>
-    <button onClick={onDeleteProfile}>삭제</button>
+    <button onClick={onDeleteProfile} className='myprofile-trash'><FontAwesomeIcon icon="fa-solid fa-trash" /></button>
     </>
     )}
     </div>
@@ -274,7 +274,7 @@ const onDeleteProfile = async() => {
     <img src={attachment} alt='' className='attach-new-image' />
     <div className='attach-select'>
     <button onClick={onclearAttachment} className='attach-cancel selector'>취소</button>
-    <input type='submit' className='attach-submit selector' />
+    <input type='submit' className='attach-submit selector' value='확인' />
     </div>
     </div>
     </>

@@ -12,8 +12,8 @@
   display:flex;
   flex-direction:column;
   color:#000; 
-  background-color:#A1C0D5; 
-  border-bottom:1px solid #96ACBA; 
+  background-color:#655987; 
+  // border-bottom:1px solid #96ACBA;
   padding:0 15px;
   box-sizing:border-box;
 
@@ -34,12 +34,16 @@
   height:auto;
   padding-top:64px;
   padding-bottom:60px;
-  background:#A1C0D5;
+  background:#7489a4;
   
   .date_info {
+    font-family: 'Poor Story', cursive;
+    font-size:20px;
+    font-weight:bold;
     opacity: 0.5;
     text-align:center;
     margin:10px;
+    color:#000;
   }
   
   .chat_box {
@@ -49,37 +53,37 @@
     width:fit-content;
     max-width:calc(100% - 80px);
     position:relative;
-    margin-bottom:20px;
+    margin-bottom:40px;
     
     .chat {
-      font-size:16px;
+      position:relative;
+      font-family: 'Poor Story', cursive;
+      font-size:20px;
       line-height:1; 
       margin:5px; 
       padding:10px 5px; 
       border-radius:5px; 
       background:#fff;
     }
+    .chat::after{
+      position:absolute;
+      transform:rotate(-15deg);
+      border-top:0px solid transparent;
+      border-left:15px solid transparent;
+      border-right:0px solid transparent;
+      border-bottom:8px solid #fff;
+      content:"";
+      bottom:-1px;
+      left:-10px;
+    }
   }
   .mytalk{
+    font-family: 'Poor Story', cursive;
+    font-size:20px;
     align-self:flex-end; 
     align-items:flex-end; 
     max-width:240px; 
     margin-right:10px;
-
-    // .chat {
-    //   background:#FFE73A;
-  
-    // }
-    // .chat_my {
-    //   margin-top:50px;
-    // }
-    // .chat_time {
-    //   position:absolute; 
-    //   left:-30px; 
-    //   bottom:-5px; 
-    //   width:50px; 
-    //   opacity:0.5;
-    // }
   }
   .other {
     align-self:flex-start;
@@ -95,13 +99,18 @@
     }
     .profile_name {
       display:block; 
+      font-family: 'Poor Story', cursive;
+      font-size:20px;
       font-weight:bold;
       margin:2px 5px 5px;
     }
     .chat_time {
       position:absolute; 
+      font-family: 'Poor Story', cursive;
+      font-size:20px;
+      font-weight:bold;
       right:-30px; 
-      bottom:-5px; 
+      bottom:-20px; 
       width:50px; 
       opacity:0.5;
     }
@@ -145,7 +154,7 @@ footer {
        }
        .emoticon_btn {
          position:absolute;
-         right:47px;
+         right:49px;
       }
       .voice_btn {
         display:block; 
@@ -154,9 +163,16 @@ footer {
         margin-right:5px; 
         line-height:37px; 
         text-align:center;
-        background:#FFE73A; 
+        background:#fff; 
         color: #513736; 
         font-size:16px;
+
+        &:hover {
+        background-color:#000
+        }
+        &:hover i{
+          color:#fff;
+        }
       }
     }
   }

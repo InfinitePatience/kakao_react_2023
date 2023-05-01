@@ -3,6 +3,7 @@ import { GoogleAuthProvider, GithubAuthProvider, signInWithPopup } from 'firebas
 import { async } from '@firebase/util';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import AuthForm from '../components/AuthForm';
+import '../styles/AuthForm.scss'
 
 // import "styles/auth.scss";
 

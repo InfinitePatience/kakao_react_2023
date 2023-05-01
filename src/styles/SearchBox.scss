@@ -16,6 +16,7 @@ main {
   align-items: center;
   height: 7.3%;
   min-height: 53px;
+  background-color: #a07096;
 }
 
 .search_inner {
@@ -26,6 +27,7 @@ main {
   height: 50%;
   background-color: #F1F2F4;
   border-radius: 5px;
+  box-shadow:1px 1px 10px #fdceba;
 
   > {
     i {

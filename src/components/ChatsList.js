@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaComment } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import '../styles/ChatsList.scss';
 import profile from '../data/Profile.json';
 
 function ChatsList() {
+
   return (
 <>
     <section className="main_section">

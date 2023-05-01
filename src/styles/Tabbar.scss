@@ -9,12 +9,15 @@
   height: 6.4%;
   min-height: 54px;
   border-top: 1px solid #c1c1c1;
-  background-color: #F7F7F7;
+  background-color: #fff;
+  font-family: 'Poor Story', cursive;
+  font-size:16px;
+  
 
   > ul {
     display: flex;
     flex-direction: row;
-    margin-top: 5px;
+    margin-top: 7px;
 
     > li {
       flex: 1;
@@ -23,7 +26,7 @@
       // border: 1px solid red;
 
       > a {
-        color: #C0C1C2;
+        color: #fdceba;
 
         > i {
           display: block;

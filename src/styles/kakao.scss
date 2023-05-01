@@ -9,47 +9,55 @@
   margin-top:5px;
 
   .chatcolor {
-    background:#FFE73A;
-    font-size:16px;
+    position: relative;
+    background:#222020;
+    font-size:20px;
     line-height:1; 
     margin:5px; 
     padding:10px 5px; 
     border-radius:5px; 
     line-height:1.2;
+    color:#fff;
   }
+
+  .chatcolor:after{
+    position:absolute;
+    transform: rotate(40deg);
+    border-top:8px solid #222020;
+    border-left:0px solid transparent;
+    border-right:15px solid transparent;
+    border-bottom:0px solid transparent;
+    content:"";
+    bottom:-5px;
+    right:-8px;
+  }
+
   .chat_my {
     margin-top:5px;
   }
   .my_chat_time {
     position:absolute; 
-    margin-left:-45px;
+    font-weight:bold;
+    font-size:16px;
+    margin-left:-50px;
     margin-bottom:5px;
-    width:50px; 
+    width:60px; 
     opacity:0.5;
   }
-}
-// .other {
-//   align-self:flex-start;
-//   top:20px;
-//   left:55px;
 
-//   .profile_img {
-//     position:absolute; 
-//     left:-60px; 
-//     top:-20px; 
-//     width:40px; 
-//     height:40px;
-//   }
-//   .profile_name {
-//     display:block; 
-//     font-weight:bold;
-//     margin:2px 5px 5px;
-//   }
-//   .chat_time {
-//     position:absolute; 
-//     right:-30px; 
-//     bottom:-5px; 
-//     width:50px; 
-//     opacity:0.5;
-//   }
-// }
+  .chatting_delete {
+    position:relative;
+    height:20px;
+    bottom:3px;
+    margin-left:10px;
+    background:none;
+    border:1px solid #222020;
+    border-radius:5px;
+    color:#fff;
+  }
+  .chatting_delete:hover{
+    background-color:#fff;
+    color:#222020;
+    cursor: pointer;
+  }
+}

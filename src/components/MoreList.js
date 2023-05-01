@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/MoreList.scss';
-import { FaRegSmile, FaPaintBrush, FaRegHandPeace, FaRegUserCircle, FaRegComment, FaInfoCircle, FaUtensils, FaHome, FaTv, FaPencilAlt, FaGraduationCap, FaLandmark, FaWonSign, FaVideo, FaUser, FaComment, FaSearch, FaEllipsisH } from "react-icons/fa";
+import { FaRegSmile,FaHandshake,FaDemocrat,FaPaintRoller, FaPaintBrush, FaRegHandPeace, FaRegUserCircle, FaComments, FaInfoCircle, FaUtensils, FaHome, FaTv, FaPencilAlt, FaGraduationCap, FaLandmark, FaWonSign, FaVideo, FaUser, FaComment, FaSearch, FaEllipsisH, FaDoorOpen } from "react-icons/fa";
 import { authService } from '../fbase';
 
 function MoreList({props}) {
@@ -27,16 +27,16 @@ function MoreList({props}) {
         <span className="profile_name">{displayName}</span>
         <span className="profile_email">{email}</span>
       </span>
-      <span className="chat_img"><Link to={"/Chats"}><i><FaRegComment /></i></Link></span>
-      <span className="Log_Out" onClick={onLogOutClick}>LogOut</span>
+      <span className="chat_img"><Link to={"/Chats"}><i><FaComments /></i></Link></span>
+      <span className="Log_Out" onClick={onLogOutClick}><i><FaDoorOpen /></i></span>
     </section>
 
     <section className="user_menu">
       <h2 className="blind">사용자 메뉴</h2>
       <ul>
-      <li><Link to={"#"}><i><FaRegSmile /></i>Emoticons</Link></li>  
-      <li><Link to={"#"}><i><FaPaintBrush /></i>Themes</Link></li>  
-      <li><Link to={"#"}><i><FaRegHandPeace /></i>Plus Friends</Link></li>  
+      <li><Link to={"#"}><i><FaDemocrat /></i>Emoticons</Link></li>  
+      <li><Link to={"#"}><i><FaPaintRoller /></i>Themes</Link></li>  
+      <li><Link to={"#"}><i><FaHandshake /></i>Plus Friends</Link></li>  
       <li><Link to={"#"}><i><FaRegUserCircle /></i>Account</Link></li>  
       </ul>
     </section>
@@ -44,26 +44,26 @@ function MoreList({props}) {
     <section className="plus_friends">
       <header>
         <h2>Plus Friends</h2>
-        <span><i><FaInfoCircle /></i>Learn More</span>
+        <span><i><FaInfoCircle /></i> Learn More</span>
       </header>
       <ul className="plus_list">
       <li><Link to={"/#"}><i><FaUtensils /></i></Link>Order</li>
-      <li><Link to={"/#"}><i><FaHome /></i></Link>Store</li>
-      <li><Link to={"/#"}><i><FaTv /></i></Link>Store</li>
-      <li><Link to={"/#"}><i><FaPencilAlt /></i></Link>Store</li>
+      <li><Link to={"/#"}><i><FaHome /></i></Link>TV Channel/Radio</li>
+      <li><Link to={"/#"}><i><FaTv /></i></Link>Education</li>
+      <li><Link to={"/#"}><i><FaPencilAlt /></i></Link>Finance</li>
       <li><Link to={"/#"}><i><FaGraduationCap /></i></Link>Store</li>
-      <li><Link to={"/#"}><i><FaLandmark /></i></Link>Store</li>
-      <li><Link to={"/#"}><i><FaWonSign /></i></Link>Store</li>
-      <li><Link to={"/#"}><i><FaVideo /></i></Link>Store</li>
+      <li><Link to={"/#"}><i><FaLandmark /></i></Link>Creation</li>
+      <li><Link to={"/#"}><i><FaWonSign /></i></Link>Politics/Society</li>
+      <li><Link to={"/#"}><i><FaVideo /></i></Link>Movies/Music</li>
       </ul>
     </section>
 
     <section className="more_app">
       <h2 className="blind">앱 더보기</h2>
       <ul>
-      <li><Link to={"#"}><span className="app_icon"></span>Kakao Story</Link></li>
+      <li><Link to={"#"}><span className="app_icon"></span>Story</Link></li>
       <li><Link to={"#"}><span className="app_icon"></span>Path</Link></li>
-      <li><Link to={"#"}><span className="app_icon"></span>Kakao friends</Link></li>
+      <li><Link to={"#"}><span className="app_icon"></span>friends</Link></li>
       </ul>
     </section>
 

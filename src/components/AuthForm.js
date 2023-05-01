@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { authService } from '../fbase';
+import '../styles/AuthForm.scss'
 // import "styles/authForm.scss";
 
 function AuthForm() {
@@ -41,7 +42,8 @@ function AuthForm() {
   const toggleAccount = () => setAccount(prev => !prev); 
   return (
     <>
-    <form onSubmit={onSubmit} className="container">  
+    <section className='messager'>Messager</section>
+    <form onSubmit={onSubmit} className="container">
         <input name="email" type='email' placeholder='Email' required value={email} onChange={onChange} className="authInput"/>
 
         <input name="password" type='password' placeholder='Password' required value={password} onChange={onChange} className="authInput"/>

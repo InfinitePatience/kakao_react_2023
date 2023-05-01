@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import '../styles/ChattingList.scss';
-import { FaAngleLeft, FaBars, FaBatteryFull, FaBluetooth, FaMicrophone, FaMoon, FaPlane, FaPlus, FaSearch, FaWifi } from "react-icons/fa";
+import { FaAngleLeft, FaBars, FaBatteryFull, FaBluetooth, FaMicrophoneAlt, FaMoon, FaPlane, FaPlus, FaSearch, FaWifi } from "react-icons/fa";
 import { Link, useLocation } from 'react-router-dom';
 import { addDoc, collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { db, storage } from '../fbase';
@@ -18,6 +18,7 @@ function ChattingList(props) {
   // const name = location.state.name;
   // const image = location.state.image
   // const id = location.state.id;
+  console.log("diwh",id)
  
   const [timer, setTimer] = useState("00:00");
   const currentTimer = () => {
@@ -189,8 +190,8 @@ function ChattingList(props) {
   <legend className="blind">채팅 입력창</legend>
     <label for="chatting" className="blind">채팅 입력</label>
     <input type="text" id="chatting" className="text_field" value={friends} onChange={onChange}/>
-    <input type="submit" className="emoticon_btn" value={'전송'} onChange={onChange}/>
-    <span className="voice_btn"><Link to={"#"}><i><FaMicrophone /></i></Link></span>
+    <input type="submit" className="emoticon_btn" value={'전송'} onChange={onChange} />
+    <span className="voice_btn"><Link to={"#"}><i><FaMicrophoneAlt /></i></Link></span>
 
 
 

@@ -1,6 +1,6 @@
 // Myprofile.scss
 .myheader {
-  background-color:rgba(0,0,0, 0.4);
+  background-color:rgba(0,0,0, 0.5);
 }
 
 .title_bar > .left_item > a {
@@ -11,11 +11,11 @@
 
    
 .mymain {
-   height:93vh;
+   height:93.8vh;
    background-repeat: no-repeat;
    background-position: 0 0;
    background-size: cover;
-   background-color:rgba(0,0,0, 0.4);
+   background-color:rgba(0,0,0, 0.5);
 
   .mybackimg { 
     position: absolute;
@@ -60,8 +60,10 @@
   margin-top: 60px;
 
 .myprofile_name {
-  font-size: 16px;
-  color:#fff;
+  font-family: 'Poor Story', cursive;
+  font-weight:bold;
+  font-size: 25px;
+  color:#eee;
   margin:5px 0 5px 0;
   background-color: transparent;
   border:transparent;
@@ -69,7 +71,9 @@
 }
 
 .myprofile_email {
-  font-size: 14px;
+  font-family: 'Poor Story', cursive;
+  font-weight:bold;
+  font-size: 25px;
   color:#fff;
   margin:5px 0 5px 0;
   background-color: transparent;
@@ -96,7 +100,10 @@
       font-weight: bold;
 
       p {
-        color:#fff;
+        font-family: 'Poor Story', cursive;
+        font-weight:bold;
+        font-size: 22px;
+        color:#eee;
       }
     }
 
@@ -108,9 +115,9 @@
       line-height: 52px;
       text-align: center;
       margin-bottom:5px;
-      // background-color: #F2F2F2;
-      color: #f2f2f2;
-      font-size: 20px;
+      background-color: #655987;
+      color: #fdceba;
+      font-size: 22px;
           }
         }
       }
@@ -118,32 +125,100 @@
   }
 }
 
-// NEW Photo
-.myprofile-edit {
+// 내 프로필
+.myprofile-scissors {
   z-index:10;
   display:flex;
   justify-content: center;
   align-items:center;
   position: absolute;
+  right:-30%;
+  top:-2%;
+  font-size:25px;
   border-radius:50%;
-  left:80px;
-  width:30px;
-  height:30px;
-  background-color:#fff;
+  width:40px;
+  height:40px;
+  // background-color:#fffb00;
+  color:#fff;
+  border:1px solid #fff;
 }
 
-.mybackcamera {
+.myprofile-trash {
+  z-index:1;
   position:absolute;
-  left:50%;
-  top:20%;
+  left:-5%;
+  top:0%;
   transform:translateX(-50%);
   display:flex;
   justify-content:center;
   align-items:center;
-  background-color:#fff;
-  width:30px;
-  height:30px;
+  font-size:20px;
+  background-color:transparent;
+  color:#f71010;
+  width:40px;
+  height:40px;
+  border:none;
   border-radius:50%;
+  border:1px solid #fff;
+}
+
+// 배경
+.mybackscissors{
+  position:absolute;
+  left:60%;
+  top:50%;
+  transform:translateX(-50%);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:25px;
+  // background-color:#fff;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  color:#fff;
+  border:1px solid #fff;
+}
+
+.mybacktrash {
+  position:absolute;
+  left:40%;
+  top:50%;
+  transform:translateX(-50%);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:20px;
+  background-color:transparent;
+  color:#f71010;
+  width:40px;
+  height:40px;
+  border:none;
+  border-radius:50%;
+  border:1px solid #fff;
+}
+
+.attach-back-img {
+  position:absolute;
+  padding:3px 10px;
+  font-family: 'Poor Story', cursive;
+  font-size:20px;
+  font-weight:bold;
+  background-color:#000;
+  color:#fff;
+  border-radius:10px;
+  border:none; 
+  top:10px; 
+
+}
+.submit {
+  top:52%;
+  right:35%;
+}
+.cancel {
+  top:52%;
+  left:35%;
+  color:#f71010;
 }
 
 .attach-new {
@@ -151,24 +226,29 @@
     position:absolute; 
     width:100px;
     height:100px;
-    margin:-55px 49px;
+    margin:-54px 60px;
     border-radius:80%;
     max-width:50%;
   }
   .attach-select{
     .selector{
       position:absolute;
-      padding:5px 10px;
-      background-color:rgba(158,158,158,0.7);
-      color:#0A6ECD;
-      border-radius:10px;    
-      top:8px; 
+      padding:3px 10px;
+      font-family: 'Poor Story', cursive;
+      font-size:20px;
+      font-weight:bold;
+      background-color:#000;
+      color:#fff;
+      border-radius:10px;
+      border:none; 
+      top:10px; 
     }
     .attach-cancel {
-      left:28%;
+      left:23%;
+      color:#f71010;
     }
     .attach-submit {
-      right:28%;
+      right:23%;
     }
     }
 }

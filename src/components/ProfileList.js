@@ -73,10 +73,9 @@ function ProfileList(props) {
           <span className="icon">
             <i><FaComment/></i>
           </span>
-          My Chatroom
+          <p>My Chatroom</p>
         </Link>
       </li>
-      <li><Link to={"#"}><span className="icon"><i><FaPencilAlt /></i></span>Edit Profile</Link></li>
       </ul>
     </div>
   </section>
