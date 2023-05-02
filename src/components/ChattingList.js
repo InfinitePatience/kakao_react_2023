@@ -14,11 +14,6 @@ function ChattingList(props) {
   const {
     id,name,image,back,userObj
   } = props;
-  // const location = useLocation();
-  // const name = location.state.name;
-  // const image = location.state.image
-  // const id = location.state.id;
-  console.log("diwh",id)
  
   const [timer, setTimer] = useState("00:00");
   const currentTimer = () => {
@@ -170,7 +165,7 @@ function ChattingList(props) {
 
   <div className="chat_box mytalk">
   {friendstalk.map(talktalk => (
-          <Kakao key={talktalk.id} talkObj={talktalk} isOwner={talktalk.creatorId === userObj.uid}/> 
+          <Kakao key={talktalk.id} talkObj={talktalk} isOwner={talktalk.creatorId === userObj.uid} chatId={id}/> 
         ))}
     {/* <span className="chat chat_my">{friends}</span>
     <span className="chat_time"><span>17</span>:<span>33</span></span> */}

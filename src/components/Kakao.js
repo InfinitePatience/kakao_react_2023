@@ -19,7 +19,7 @@ function Kakao(props) {
   const [newTalk, setNewTalk] = useState(text);
   const [nowDate, setNowDate] = useState(createdAt);
   const location = useLocation();
-  // chatId = location.state.id;
+  // const chatId = location.state.id;
   console.log("sdsd",location)
 
   const onDeleteClick = async () => {
@@ -32,6 +32,7 @@ function Kakao(props) {
       }
     }
   }
+  console.log(onDeleteClick)
   
   const toggleEditing = () => setEditing((prev) => !prev); //토글 기능
 
