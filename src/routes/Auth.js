@@ -1,7 +1,7 @@
 import { authService } from '../fbase';
 import { GoogleAuthProvider, GithubAuthProvider, signInWithPopup } from 'firebase/auth';
 import { async } from '@firebase/util';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import AuthForm from '../components/AuthForm';
 import '../styles/AuthForm.scss'
 
@@ -38,10 +38,10 @@ function Auth() {
       style={{marginBottom:30}}/> */}
       <AuthForm />
       <div className="authBtns">
-        <button onClick={onSocialClick} name="google" className='authBtn'>
-          Continue with Google {/*<FontAwesomeIcon icon="fa-brands fa-google" />*/}</button>
-        <button onClick={onSocialClick} name="github" className='authBtn'>
-          Continue with Github {/*<FontAwesomeIcon icon="fa-brands fa-github" />*/}</button>
+        <button onClick={onSocialClick} name="google" className='authBtn_google'>
+          {/* Continue with Google */} <FontAwesomeIcon icon="fa-brands fa-google" /></button>
+        <button onClick={onSocialClick} name="github" className='authBtn_github'>
+          {/* Continue with Github */} <FontAwesomeIcon icon="fa-brands fa-github" /></button>
       </div>
     </div>
   )

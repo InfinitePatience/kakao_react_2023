@@ -42,13 +42,16 @@ function AuthForm() {
   const toggleAccount = () => setAccount(prev => !prev); 
   return (
     <>
-    <section className='messager'>Messager</section>
+    <div className="wrapper">
+      <div className="typing-demo">This is a chat project.</div>
+    </div>
+    {/* <section className='messager'>Messager</section> */}
     <form onSubmit={onSubmit} className="container">
-        <input name="email" type='email' placeholder='Email' required value={email} onChange={onChange} className="authInput"/>
+        <input name="email" type='email' placeholder='Email' required value={email} onChange={onChange} className="authInput_email"/>
 
-        <input name="password" type='password' placeholder='Password' required value={password} onChange={onChange} className="authInput"/>
+        <input name="password" type='password' placeholder='Password' required value={password} onChange={onChange} className="authInput_password"/>
 
-        <input type='submit' value={newAccount ? "Create Account" : "Log In"} className="authInput authSubmit"/> 
+        <input type='submit' value={newAccount ? "Create Account" : "Log In"} className="authSubmit"/> 
         {/* newAccount 값이 value 값을 true 인지 false 인지에 따라 입력된 값을 바뀌게 설정 */}
         {error && <span className="authError">{error}</span>}
       </form>

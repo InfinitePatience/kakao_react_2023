@@ -148,15 +148,6 @@ function ChattingList(props) {
       <span className="profile_name">{name}</span>
       <span className="chat">And this is an answer</span>
       <span className="chat">And this is an answer And this is answer</span>
-      <span className="chat">And this is an answer</span>
-      <span className="chat">And this is an answer</span>
-      <span className="chat">And this is an answer</span>
-      <span className="chat">And this is an answer</span>
-      <span className="chat">And this is an answer</span>
-      <span className="chat">And this is an answer</span>
-      <span className="chat">And this is an answer</span>
-      <span className="chat">And this is an answer And this is answer</span>
-      <span className="chat">And this is an answer And this is answer</span>
       <span className="chat">And this is an answer And this is answer</span>
       <span className="chat">And this is an answer</span>
       <span className="chat_time"><span>17</span>:<span>33</span></span>
@@ -183,22 +174,23 @@ function ChattingList(props) {
   <form onSubmit={onSubmit}>
   <fieldset className="text_box">
   <legend className="blind">채팅 입력창</legend>
-    <label for="chatting" className="blind">채팅 입력</label>
+    <label for="chatting" className="chatting_blind"></label>
     <input type="text" id="chatting" className="text_field" value={friends} onChange={onChange}/>
-    <input type="submit" className="emoticon_btn" value={'전송'} onChange={onChange} />
+    <input type="submit" className="emoticon_btn" value={''} onChange={onChange} />
     <span className="voice_btn"><Link to={"#"}><i><FaMicrophoneAlt /></i></Link></span>
-
-
+  
 
     {attachment && (
       <div className='chatting_attach'>
+        <div>
         <img src={attachment} width="70" height="60" alt="" />
-        <button onClick={onclearAttachment} className='chatting_button'>Remove</button>  
+        <button onClick={onclearAttachment} className='chatting_button'></button>  
         </div>
+      </div> 
       )}
   </fieldset>
   </form>
-</footer>
+  </footer>
 </>
   )
 }

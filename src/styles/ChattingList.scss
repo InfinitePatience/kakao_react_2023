@@ -45,13 +45,11 @@
     margin:10px;
     color:#000;
   }
-  
+
   .chat_box {
-    display:inline-flex; 
+    display:flex; 
     flex-direction:column;
     align-items:flex-start;
-    width:fit-content;
-    max-width:calc(100% - 80px);
     position:relative;
     margin-bottom:40px;
     
@@ -80,9 +78,8 @@
   .mytalk{
     font-family: 'Poor Story', cursive;
     font-size:20px;
-    align-self:flex-end; 
+    // align-self:flex-end;
     align-items:flex-end; 
-    max-width:240px; 
     margin-right:10px;
   }
   .other {
@@ -154,9 +151,25 @@ footer {
        }
        .emoticon_btn {
          position:absolute;
-         right:49px;
+         border-radius:10px;
+         background:url(../images/chat_arrow.png);
+         background-color:#fff;
+         background-size:cover;
+         background-repeat:no-repeat;
+         background-position:50% 0;
+         right:52px;
+         width:35px;
+         height:35px;
+
+         &:active {
+          background:url(../images/chat_arrow2.png);
+          background-color:#655987;
+          background-size:cover;
+          background-repeat:no-repeat;
+         }
       }
       .voice_btn {
+        position:absolute;
         display:block; 
         width:34px; 
         height:37px;
@@ -174,6 +187,33 @@ footer {
           color:#fff;
         }
       }
+    }
+
+    .chatting_attach {
+      position:absolute;
+      left:-40px;
+      bottom:-137px;
+      width:108%;
+      margin-bottom:160px;
+      div {
+        width:100%;
+        background-color:#000;
+        opacity:0.8;
+      img {
+        margin-left:15px;
+        width:120px;
+        height:150px;}
+      }
+      .chatting_button {
+        position:absolute;
+        top:10%;
+        right:7%;
+        width:40px;
+        height:40px;
+        background:url(../images/chatting_img_cancel.png);
+        background-size:cover;
+      }
+  
     }
   }
 }

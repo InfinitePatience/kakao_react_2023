@@ -18,6 +18,7 @@ function Kakao(props) {
   const [editing, setEditing] = useState(false);
   const [newTalk, setNewTalk] = useState(text);
   const [nowDate, setNowDate] = useState(createdAt);
+
   const location = useLocation();
   // const chatId = location.state.id;
   console.log("sdsd",location)
@@ -60,7 +61,9 @@ function Kakao(props) {
   }, [])
 
   return (
-    <div>
+    <div className='talk_container'>
+      {isOwner ? (
+        <>
       {editing ? (
         <>
           <form onSubmit={onSubmit} className='container tweetEdit'>
@@ -75,7 +78,7 @@ function Kakao(props) {
             <span className='chatcolor chat_my'>{text}</span>
           )}
           {attachmentUrl && (// 이렇게 설정하면 이미지 없이 내용만 넣어도 엑박이 안 뜸
-          <img src={attachmentUrl} width="50" height="50" alt='' />
+          <img src={attachmentUrl} width="150" height="140" alt='' />
           )}
           <span className='my_chat_time'><span>{nowDate}</span></span>
           {isOwner && (// true일 경우에만 아래 내용들이 보이게 된다.
@@ -84,6 +87,10 @@ function Kakao(props) {
            </>
           )}
         </div>
+      )}  
+      </>
+      ) : (
+        <div className='chat_box mytalk' style={{display:'none'}}></div>
       )}
     </div>
   )

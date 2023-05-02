@@ -1,15 +1,46 @@
 /* AuthForm.scss */
 @import url(Common.scss);
 
-.messager {
-  position: absolute;
-  font-family: 'Poor Story', cursive;
-  top:30%;
-  font-size:50px;
-  -webkit-animation: tracking-in-contract-bck 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-	        animation: tracking-in-contract-bck 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+.wrapper {
+  height:70vh;
+  /* This part is important for centering */
+  display: grid;
+  place-items: center;
 }
 
+.typing-demo {
+  width:400px;
+  animation:typing 2s steps(22), blink 0.8s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid yellow;
+  font-family: 'Poor Story', cursive;
+  font-size: 4em;
+}
+// 제목 애니메이션
+@keyframes typing {
+  from {
+    width:0;
+  }
+}
+@keyframes blink {
+  50% {
+    border-color:transparent;
+  }
+}
+
+
+// 회원가입 애니메이션
+@keyframes text-focus-in {
+  0% {
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
 .container {
   display:flex;
   flex-direction:column;
@@ -17,7 +48,7 @@
   align-items:center;
   position:absolute;
   top:45%;
-
+  animation: text-focus-in 2.3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 
   > input {
       text-align:center;
@@ -27,10 +58,44 @@
   }
 }
 
+.authInput_email {
+  border:none;
+  border-radius:10px;
+  margin-bottom:10px;
+  padding:10px 10px;
+  font-size:25px;
+  
+}
+
+.authInput_password {
+  border:none;
+  border-radius:10px;
+  padding:10px 10px;
+  font-size:25px;
+  
+}
+
 .authSubmit {
+  width:200px;
+  height:50px;
   position:absolute;
-  top:150%;
+  bottom:-120%;
+  border:none;
+  border-radius:10px;
+  background-color:#a07096;
   font-family: 'Poor Story', cursive;
+  font-size:25px;
+  color:yellow;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.authError {
+  margin-top:10px;
+  margin-bottom:-30px;
+  text-align:center;
+  font-size:15px;
+  color:#FFE650;
 }
 
 .authSwitch {
@@ -39,8 +104,15 @@
   justify-content:center;
   align-items:center;
   position:absolute;
-  top:55%;
+  top:68%;
+  padding:0 5px;
+  border-radius:5px;
+  color:#111;
+  font-weight:600;
   font-family: 'Poor Story', cursive;
+  font-size:25px;
+  cursor:default;
+  animation: text-focus-in 2.3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
 
 .authContainer { 
@@ -49,45 +121,32 @@
   justify-content:center;
   align-items:center;
 
+
   .authBtns {
     position:absolute;
-    top:60%;
+    top:80%;
+    animation: text-focus-in 2.3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    
   
-  > .authBtn {
-    font-family: 'Poor Story', cursive;
+  > .authBtn_google {
+    width:50px;
+    height:47px;
+    border:none;
+    background-color:transparent;
+    cursor: pointer;
+    font-size:40px;
+    margin-right:40px;
+    color:#fff;
   }
-  }
-}
 
-@-webkit-keyframes tracking-in-contract-bck {
-  0% {
-    letter-spacing: 1em;
-    -webkit-transform: translateZ(400px);
-            transform: translateZ(400px);
-    opacity: 0;
+  > .authBtn_github {
+    width:50px;
+    height:46px;
+    border:none;
+    background-color:transparent;
+    cursor: pointer;
+    font-size:40px;
+    color:#fff;
   }
-  40% {
-    opacity: 0.6;
-  }
-  100% {
-    -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-    opacity: 1;
-  }
-}
-@keyframes tracking-in-contract-bck {
-  0% {
-    letter-spacing: 1em;
-    -webkit-transform: translateZ(400px);
-            transform: translateZ(400px);
-    opacity: 0;
-  }
-  40% {
-    opacity: 0.6;
-  }
-  100% {
-    -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-    opacity: 1;
   }
 }

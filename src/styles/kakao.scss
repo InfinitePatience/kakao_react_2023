@@ -1,11 +1,15 @@
 //kakao.scss
 
+.talk_container {
+  max-width:350px;
+}
+
 .ddd{
+  position: relative;
   display:flex;
   align-self:flex-end; 
-  align-items:flex-end; 
-  max-width:240px; 
-  margin-right:10px;
+  align-items:flex-end;
+  word-break:break-all;
   margin-top:5px;
 
   .chatcolor {
@@ -14,7 +18,7 @@
     font-size:20px;
     line-height:1; 
     margin:5px; 
-    padding:10px 5px; 
+    padding:10px 10px; 
     border-radius:5px; 
     line-height:1.2;
     color:#fff;
@@ -33,13 +37,13 @@
   }
 
   .chat_my {
-    margin-top:5px;
+    margin-top:3px;
   }
   .my_chat_time {
     position:absolute; 
     font-weight:bold;
     font-size:16px;
-    margin-left:-50px;
+    margin-left:-55px;
     margin-bottom:5px;
     width:60px; 
     opacity:0.5;
