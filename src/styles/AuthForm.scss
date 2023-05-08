@@ -104,7 +104,8 @@
   justify-content:center;
   align-items:center;
   position:absolute;
-  top:68%;
+  // top:72%;
+  bottom:25%;
   padding:0 5px;
   border-radius:5px;
   color:#111;
@@ -149,4 +150,6 @@
     color:#fff;
   }
   }
+}
+@media screen and (max-height:800px) {
 }
