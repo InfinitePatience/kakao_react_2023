@@ -15,16 +15,16 @@
 },
 {
   "id":"3",
-  "name":"Jenny",
-  "images":"https://i.pinimg.com/236x/e6/c9/8b/e6c98b9debaa165dc2852cebff1bb275.jpg",
-  "back":"https://i.pinimg.com/originals/4d/ca/ef/4dcaef1d07636c4fcbfbd22811620752.gif",
-  "comment":"Hello! This is a test Message!"
+  "name":"Food",
+  "images":"https://i.pinimg.com/564x/ed/7f/e1/ed7fe19142ab24c774b3c68c6e25d296.jpg",
+  "back":"https://i.pinimg.com/564x/67/94/d5/6794d5a317ab3357db38c7074fe6ffb4.jpg",
+  "comment":"give me food!!"
 },
 {
   "id":"4",
-  "name":"오해원",
-  "images":"https://i.pinimg.com/564x/c8/3e/33/c83e338fdcaac2794c17b48ceeca04ff.jpg",
-  "back":"https://i.pinimg.com/564x/a9/1c/63/a91c633aa3b93ccbede9989808face1e.jpg",
+  "name":"헬스",
+  "images":"https://i.pinimg.com/564x/09/8e/5c/098e5cac17d2b721897ea1924a967057.jpg",
+  "back":"https://i.pinimg.com/564x/9c/8a/5c/9c8a5c1c51917a031dffae146ea4e2c1.jpg",
   "comment":"Hello! This is a test Message!"
 },
 {
