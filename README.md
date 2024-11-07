@@ -14,8 +14,7 @@ __*React와 Firebase를 사용해 간단한 CRUD가 가능한 채팅 앱 SPA 입
 
 ## 🛠 사용된 기술 스택
 
-<img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=white"/>
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white"/> 
+<img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=white"/> <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white"/> 
 <img src="https://img.shields.io/badge/css3-1572B6?style=flat&logo=css3&logoColor=white"/> 
 <img src="https://img.shields.io/badge/firebase-DD2C00?style=flat&logo=firebase&logoColor=white"/>
 <img src="https://img.shields.io/badge/axios-5A29E4?style=flat&logo=axios&logoColor=white"/> 
